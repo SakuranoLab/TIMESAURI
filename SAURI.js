@@ -6,7 +6,8 @@ var PassSec2;	// 秒数カウント用変数（DINOSAURI用）
 var PassYee;	// DINOSAURI何周分
 
 //Twitter投稿用
-var url = "0724.tokyo/TIMESAURI/";
+// var url = "0724.tokyo/TIMESAURI/";
+var url = "https://sakuranolab.github.io/TIMESAURI/"
 var hash = "DINOSAURI何周分か換算するサイト";
 
 // 繰り返し処理の中身
@@ -23,7 +24,7 @@ function showPassage() {
         PassHour++;
     }
     // DINOSAURIを1単位だと思っている人の時間換算処理
-    PassYee = PassSec2 / 2612;
+    PassYee = (PassSec2 / 2612).toFixed(3);
     var msg = "ボタンを押してから" + PassHour + "時間" + PassMin + "分" + PassSec + "秒が経過しました。これはDINOSAURI" + PassYee + "周分に相当します。";   // 表示文作成
     document.getElementById("PassageArea").innerHTML = msg;   // 表示更新
 }
