@@ -33,17 +33,13 @@ function showPassage() {
     CurrentTime = Date.now();
     TimeDiff = CurrentTime - StartTime;
     TimeDiffSec = Math.floor(TimeDiff / 1000);
-    console.log("Start:" + StartTime + "Current:" + CurrentTime);
-    console.log("PassSec2:" + PassSec2 + "TimeDiffSec:" + TimeDiffSec);
     // PassSec2と比較して違っていた場合（検討の余地あり）、TimeDiffSecを正とし再度時分秒を計算する
     if (TimeDiffSec != PassSec2) {
         PassSec2 = TimeDiffSec;
         PassHour = Math.floor(TimeDiffSec / 3600);
         PassMin = Math.floor(TimeDiffSec % 3600 / 60);
         PassSec = Math.floor(TimeDiffSec % 3600 % 60);
-        console.log("passed");
     }
-    console.log(Math.floor(TimeDiffSec / 3600) + "時間" + Math.floor(TimeDiffSec % 3600 / 60) + "分" + Math.floor(TimeDiffSec % 3600 % 60) + "秒");
     // DINOSAURIを1単位だと思っている人の時間換算処理
     PassYee = (PassSec2 / 2612).toFixed(3);
     var msg = "ボタンを押してから" + PassHour + "時間" + PassMin + "分" + PassSec + "秒が経過しました。これはDINOSAURI" + PassYee + "周分に相当します。";   // 表示文作成
