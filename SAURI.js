@@ -87,11 +87,20 @@ function DINOnize() {
         return;
     }
 
+    if (OrigHour === "") {
+        OrigHour = 0;
+    }
+
+    if (OrigMin === "") {
+        OrigMin = 0;
+    }
+
+    if (OrigSec === "") {
+        OrigSec = 0;
+    }
+
     SumSec = OrigHour * 3600 + OrigMin * 60 + OrigSec * 1;
-    console.log(OrigHour + " " + OrigMin + " " + OrigSec);
-    console.log(SumSec);
     DINOnize = (SumSec / 2612).toFixed(3);
-    console.log(DINOnize);
 
     var msg = OrigHour + "時間" + OrigMin + "分" + OrigSec + "秒は、" + DINOnize + "DINOSAURIに相当します。"
     document.getElementById("CalculateResult").innerHTML = msg;   // 表示更新
