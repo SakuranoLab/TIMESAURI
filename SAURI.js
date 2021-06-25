@@ -1,3 +1,4 @@
+// 経過時間用
 var PassSec;	// 秒数カウント用変数
 var PassMin;	// 分
 var PassHour;	// 時間
@@ -9,6 +10,13 @@ var CurrentTime; // 現在時刻
 var StartTime; // 開始時刻
 var TimeDiff; // 時間の差分（ミリ秒）
 var TimeDiffSec // 時間の差分（秒）
+
+// 時間変換用
+var OrigHour;  // 入力された時間
+var OrigMin;   // 入力された分
+var OrigSec;   // 入力された秒
+var SumSec;    // 合計の秒
+var DINOnized; // DINOSAURI変換 
 
 //Twitter投稿用
 // var url = "0724.tokyo/TIMESAURI/";
@@ -66,4 +74,31 @@ function stopShowing() {
     window.open("https://twitter.com/intent/tweet?text=" + msg + "&url=" + url + "&hashtags=" + hash, "_blank");
     clearInterval(PassageID);   // タイマーのクリア
     document.getElementById("startcount").disabled = false;   // 開始ボタンの有効化
+}
+
+// 入力された時分秒のDINOへの変換
+function DINOnize() {
+    OrigHour = document.getElementById("hourinput").value;
+    OrigMin = document.getElementById("minuteinput").value;
+    OrigSec = document.getElementById("secinput").value;
+
+    if (isNaN(OrigHour) || isNaN(OrigMin) || isNaN(OrigSec)) {
+        document.getElementById("CalculateResult").innerHTML = "半角の数字を入力してください。";
+        return;
+    }
+
+    SumSec = OrigHour * 3600 + OrigMin * 60 + OrigSec * 1;
+    console.log(OrigHour + " " + OrigMin + " " + OrigSec);
+    console.log(SumSec);
+    DINOnize = (SumSec / 2612).toFixed(3);
+    console.log(DINOnize);
+
+    var msg = OrigHour + "時間" + OrigMin + "分" + OrigSec + "秒は、" + DINOnize + "DINOSAURIに相当します。"
+    document.getElementById("CalculateResult").innerHTML = msg;   // 表示更新
+
+}
+
+function DINOnizeTweet() {
+    msg = document.getElementById("CalculateResult").innerHTML;
+    window.open("https://twitter.com/intent/tweet?text=" + msg + "&url=" + url + "&hashtags=" + hash, "_blank");
 }

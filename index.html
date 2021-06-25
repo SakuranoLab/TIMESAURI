@@ -14,15 +14,38 @@
 	</head>
 
 <body>
-	<p>
+	<div id="TIMESAURI">
+		<p>
 
-	<h1 style="text-align: center;">TIMESAURI</h1>
-	</p>
-	<p style="text-align: center;">
-		<input type="button" class="button" value="開始/リセット" id="startcount" onclick="startShowing();">
-		<input type="button" class="button" value="停止/作業時間報告" id="endcount" onclick="stopShowing();">
-	</p>
-	<p id="PassageArea" style="text-align: center;">(ここにカウントが表示されます)</p>
+		<h1 style="text-align: center;">TIMESAURI</h1>
+		</p>
+		<p>
+			<input type="button" class="button" value="開始/リセット" id="startcount" onclick="startShowing();">
+			<input type="button" class="button" value="停止/作業時間報告" id="endcount" onclick="stopShowing();">
+		</p>
+		<p id="PassageArea">(ここにカウントが表示されます)</p>
+	</div>
+
+	<p></p>
+
+	<div id="DINOnize">
+		<p>
+			ここに時分秒を入力するとDINOSAURIに変換してくれます
+		</p>
+		<p>
+
+			<input type="text" id="hourinput">時間
+			<input type="text" id="minuteinput">分
+			<input type="text" id="secinput">秒
+		</p>
+		<p>
+			<input type="button" class="button" value="計算" id="calculate" onclick="DINOnize();">
+			<input type="button" class="button" value="ツイート" id="ツイートする" onclick="DINOnizeTweet();">
+		</p>
+		<p id="CalculateResult">
+			ここに変換結果が表示されます
+		</p>
+	</div>
 
 </body>
 
