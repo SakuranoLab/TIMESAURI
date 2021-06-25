@@ -12,6 +12,7 @@ var TimeDiff; // 時間の差分（ミリ秒）
 var TimeDiffSec // 時間の差分（秒）
 
 // 時間変換用
+var ErrFlg;    // 入力チェックエラーフラグ
 var OrigHour;  // 入力された時間
 var OrigMin;   // 入力された分
 var OrigSec;   // 入力された秒
@@ -78,12 +79,25 @@ function stopShowing() {
 
 // 入力された時分秒のDINOへの変換
 function DINOnize() {
+    ErrFlg = false;
     OrigHour = document.getElementById("hourinput").value;
     OrigMin = document.getElementById("minuteinput").value;
     OrigSec = document.getElementById("secinput").value;
 
     if (isNaN(OrigHour) || isNaN(OrigMin) || isNaN(OrigSec)) {
-        document.getElementById("CalculateResult").innerHTML = "半角の数字を入力してください。";
+        ErrFlg = true;
+    }
+
+    if (OrigHour.indexOf(".") != -1 || OrigMin.indexOf(".") != -1 || OrigSec.indexOf(".") != -1) {
+        ErrFlg = true;
+    }
+
+    if (OrigHour.indexOf("-") != -1 || OrigMin.indexOf("-") != -1 || OrigSec.indexOf("-") != -1) {
+        ErrFlg = true;
+    }
+
+    if (ErrFlg === true) {
+        document.getElementById("CalculateResult").innerHTML = "半角の自然数を入力してください。";
         return;
     }
 
