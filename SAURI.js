@@ -100,11 +100,10 @@ function DINOnize() {
     }
 
     SumSec = OrigHour * 3600 + OrigMin * 60 + OrigSec * 1;
-    DINOnize = (SumSec / 2612).toFixed(3);
+    DINOnized = (SumSec / 2612).toFixed(3);
 
-    var msg = OrigHour + "時間" + OrigMin + "分" + OrigSec + "秒は、" + DINOnize + "DINOSAURIに相当します。"
+    var msg = OrigHour + "時間" + OrigMin + "分" + OrigSec + "秒は、" + DINOnized + "DINOSAURIに相当します。"
     document.getElementById("CalculateResult").innerHTML = msg;   // 表示更新
-
 }
 
 function DINOnizeTweet() {
